@@ -20,7 +20,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "lab test -v -L -l -r console -o stdout -r html -o coverage/index.html -T ./index"
+    "test": "lab test -v -L -l -T ./index"
   },
   "license": "MIT",
   "engines": {

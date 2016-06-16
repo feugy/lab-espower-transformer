@@ -1,12 +1,17 @@
 {
   "name": "lab-espower-transformer",
-  "version": "0.1.0",
-  "author": "Feugy <damien.feugas@gmail.com",
+  "version": "1.0.0",
   "description": "Lab transformer to enable power-assert !",
+  "author": {
+    "name": "Feugy",
+    "email": "damien.feugas@gmail.com",
+    "url": "http://feugy.github.io"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/feugy/lab-espower-transformer.git"
   },
+  "bugs": "https://github.com/feugy/lab-espower-transformer/issues",
   "dependencies": {
     "escodegen": "^1.8.0",
     "eslint": "2.12.0",
@@ -22,8 +27,14 @@
     "lint": "eslint .",
     "test": "lab test -v -L -l -T ./index"
   },
+  "keywords": [
+    "assert",
+    "lab",
+    "hapi",
+    "power-assert"
+  ],
   "license": "MIT",
   "engines": {
-    "node": "0.10.23"
+    "node": "5.0.0"
   }
 }

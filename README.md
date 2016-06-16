@@ -33,7 +33,7 @@ $ lab -T node_modules/lab-espower-transformer
 
 AUTHOR
 ---------------------------------------
-* [Feugy](node_modules/lab-espower-transformer)
+* [Feugy](http://feugy.github.io)
 
 
 LICENSE

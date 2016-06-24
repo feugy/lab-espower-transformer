@@ -1,5 +1,5 @@
 const espower = require('espower')
-const esprima = require('esprima')
+const acorn = require('acorn')
 const escodegen = require('escodegen')
 
 module.exports = [{
@@ -15,10 +15,10 @@ module.exports = [{
     if (filename.indexOf('node_modules') !== -1 || content.indexOf('power-assert') === -1) return content
     return escodegen.generate(
       espower(
-        esprima.parse(
+        acorn.parse(
           content,
-          {tolerant: true, loc: true, tokens: true}
-        ), {path: filename}
+          {ecmaVersion: 6, locations: true}
+        )
       )
     )
   }

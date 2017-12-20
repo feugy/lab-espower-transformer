@@ -32,6 +32,13 @@ $ lab -T node_modules/lab-espower-transformer
 }
 ```
 
+CHANGELOG
+---------
+
+# 2.0.0
+- supports async/await syntax and lab@15. Don't use with lab version >=14
+
+
 AUTHOR
 ------
 

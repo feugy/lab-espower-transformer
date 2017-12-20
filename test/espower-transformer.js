@@ -10,34 +10,30 @@ describe('Lab Espower Transformer', () => {
   const tested = Lab.script({schedule: false})
 
   tested.describe('failing test cases', () => {
-    tested.it('inequality', finished => {
+    tested.it('inequality', () => {
       const obj = {
         prop1: {
           prop2: false
         }
       }
       assert(obj.prop1.prop2)
-      finished()
     })
   })
 
-  it('should give contextualized reports when test are failing', done => {
+  it('should give contextualized reports when test are failing', async () => {
     // when running the test with lab
-    Lab.report(tested, {
+    const {output} = await Lab.report(tested, {
       verbose: true,
       leaks: false,
       reporter: 'json',
       output: null
-    }, (err, code, output) => {
-      assert.ok(!err)
-      const report = JSON.parse(output)
-      assert.equal(report.tests['failing test cases'].length, 1)
-
-      const details = report.tests['failing test cases'][0]
-      // classical error report would only contains true !== false
-      assert.ok(details.err.indexOf('Object{"prop2":false}') >= 0)
-      assert.ok(details.err.indexOf(assert('obj.prop1.prop2') >= 0))
-      done()
     })
+    const report = JSON.parse(output)
+    assert.equal(report.tests['failing test cases'].length, 1)
+
+    const details = report.tests['failing test cases'][0]
+    // classical error report would only contains true !== false
+    assert.ok(details.err.indexOf('Object{"prop2":false}') >= 0)
+    assert.ok(details.err.indexOf(assert('obj.prop1.prop2') >= 0))
   })
 })

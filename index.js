@@ -13,13 +13,26 @@ module.exports = [{
    */
   transform: (content, filename) => {
     if (filename.indexOf('node_modules') !== -1 || content.indexOf('power-assert') === -1) return content
-    return escodegen.generate(
-      espower(
-        acorn.parse(
-          content,
-          {ecmaVersion: 6, locations: true}
-        )
-      )
-    )
+    let ast
+    const comments = []
+    const tokens = []
+    try {
+      ast = acorn.parse(content, {
+        ecmaVersion: 8,
+        ranges: true,
+        locations: true,
+        sourceFile: true,
+        onComment: comments,
+        onToken: tokens
+      })
+    } catch (err) {
+      // remove stack for simpler errors
+      delete err.stack
+      throw err
+    }
+    // attach comments using collected information
+    escodegen.attachComments(ast, comments, tokens)
+    // generate code
+    return escodegen.generate(espower(ast))
   }
 }]

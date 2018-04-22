@@ -1,6 +1,6 @@
 {
   "name": "lab-espower-transformer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lab transformer to enable power-assert !",
   "author": {
     "name": "Feugy",
@@ -39,6 +39,6 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "8.0.0"
+    "node": ">=8.0.0"
   }
 }
